@@ -30,16 +30,24 @@
 - [x] **AsterEngine.sol**: Strategy engine for capital deployment.
 - [x] **Interfaces**: Integration with AsterDEX standards.
 
-### Phase 3: The Integration (In Progress) 🔄
-- [ ] **Contract Testing**: Unit tests for Vault and Engine logic.
-- [ ] **Web3 Connection**: Integrate Wagmi/Viem/Ethers.js for wallet connection.
-- [ ] **Contract Hooks**: Read/Write functions from frontend to blockchain.
-- [ ] **Testnet Pilot**: Deploy contracts to BNB Testnet and verify flows.
+### Phase 3: The Stack (Harvest & Zap) ✅
+- [x] **StackingRouter.sol**: Logic for harvest, zap, and LP creation.
+- [x] **PancakeSwap Integration**: Interfaces for Router, Pair, and MasterChef.
+- [x] **AsterEngine Upgrade**: Integrated StackingRouter for auto-compounding.
+- [x] **Contract Testing**: Unit tests for Vault, Engine, and Zapping logic.
 
-### Phase 4: The Launch 🚀
+### Phase 4: Integration & The Speed ✅
+- [x] **Unit Testing**: 20/20 tests passing (SingularityVault + AsterEngine).
+- [x] **Mock Contracts**: MockERC20 and MockAsterDEX for local testing.
+- [x] **Web3 Connection**: Wagmi + RainbowKit + viem integrated.
+- [x] **Keeper Bot**: Automated harvest script with bounty system.
+- [x] **Deployment Script**: Full deploy + wiring script for BNB Chain.
+- [x] **Bounty System**: Configurable keeper incentives (1-5% BPS).
+
+### Phase 5: Mainnet & Beyond 🚀
 - [ ] **Security Audit**: Third-party review of smart contracts.
 - [ ] **Mainnet Deployment**: Official launch on BNB Chain.
-- [ ] **Keeper Network**: Activation of decentralized keeper bots.
+- [ ] **Keeper Network**: Public keeper bot activation.
 - [ ] **DAO Governance**: Community voting implementation.
 
 ## 🛠 Tech Stack

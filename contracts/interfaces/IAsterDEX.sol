@@ -7,4 +7,6 @@ interface IAsterDEX {
     function emergencyWithdraw() external;
     function balanceOf(address account) external view returns (uint256);
     function totalStaked() external view returns (uint256);
+    function harvest() external; // Changed to no return for broader compatibility
+    function rewardToken() external view returns (address);
 }

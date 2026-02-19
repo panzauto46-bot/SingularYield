@@ -1,4 +1,5 @@
-import { Wallet, Activity, ShieldCheck, Zap } from 'lucide-react';
+import { Activity, ShieldCheck, Zap } from 'lucide-react';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export function Header() {
   return (
@@ -43,13 +44,7 @@ export function Header() {
             </div>
 
             {/* Connect Wallet */}
-            <button className="relative group overflow-hidden px-6 py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all duration-300">
-              <div className="flex items-center gap-2">
-                <Wallet className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-                <span>Connect Wallet</span>
-              </div>
-              <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            </button>
+            <ConnectButton showBalance={false} chainStatus="icon" accountStatus="address" />
           </div>
         </div>
       </div>

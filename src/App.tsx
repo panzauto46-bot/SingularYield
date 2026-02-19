@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LayoutDashboard, Wallet, Cpu, Crosshair, FileJson } from 'lucide-react';
+import { WagmiProvider } from 'wagmi';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { config } from './config/wagmi';
+import '@rainbow-me/rainbowkit/styles.css';
 
 import { Header } from './components/Header';
 import { GlobalDashboard } from './pages/Dashboard';
@@ -8,6 +13,8 @@ import { VaultInterface } from './pages/Vault';
 import { EngineRoom } from './pages/Engine';
 import { KeeperHub } from './pages/Keeper';
 import { TransparencyPanel } from './pages/Transparency';
+
+const queryClient = new QueryClient();
 
 type TabType = 'dashboard' | 'vault' | 'engine' | 'keeper' | 'transparency';
 
@@ -19,7 +26,7 @@ const tabs = [
   { id: 'transparency', label: 'Transparency', icon: FileJson },
 ] as const;
 
-export function App() {
+function AppContent() {
   const [activeTab, setActiveTab] = useState<TabType>('dashboard');
 
   const renderContent = () => {
@@ -94,5 +101,22 @@ export function App() {
         <p className="mt-2">Decentralized Keepers • Autonomous Yield • Trustless Execution</p>
       </footer>
     </div>
+  );
+}
+
+export function App() {
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider theme={darkTheme({
+          accentColor: '#10B981', // Emerald-500
+          accentColorForeground: 'white',
+          borderRadius: 'large',
+          fontStack: 'system',
+        })}>
+          <AppContent />
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 }
