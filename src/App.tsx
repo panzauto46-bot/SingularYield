@@ -8,11 +8,11 @@ import { config } from './config/wagmi';
 import '@rainbow-me/rainbowkit/styles.css';
 
 import { Header } from './components/Header';
-import { GlobalDashboard } from './pages/Dashboard';
-import { VaultInterface } from './pages/Vault';
-import { EngineRoom } from './pages/Engine';
-import { KeeperHub } from './pages/Keeper';
-import { TransparencyPanel } from './pages/Transparency';
+import { GlobalDashboard } from './components/GlobalDashboard';
+import { VaultInterface } from './components/VaultInterface';
+import { EngineRoom } from './components/EngineRoom';
+import { KeeperHub } from './components/KeeperHub';
+import { TransparencyPanel } from './components/TransparencyPanel';
 
 const queryClient = new QueryClient();
 
