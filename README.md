@@ -16,6 +16,32 @@
 - **Premium UI/UX**: A stunning, glassmorphism-based interface designed for the modern DeFi user.
 - **Real-time Analytics**: Live dashboard verifying system health, APY, and TVL.
 
+## 🗺️ Roadmap
+
+### Phase 1: The Command Center (Completed) ✅
+- [x] **Project Initialization**: GitHub repo setup and environment configuration.
+- [x] **UI/UX Design**: Premium "Space-Theme" interface with Glassmorphism.
+- [x] **Frontend Architecture**: React + Vite + Tailwind v4 structure.
+- [x] **Live Deployment**: Hosted on Vercel for public access.
+
+### Phase 2: The Core (Completed) ✅
+- [x] **Smart Contract Foundation**: Hardhat environment setup.
+- [x] **SingularityVault.sol**: Non-custodial vault logic with share system.
+- [x] **AsterEngine.sol**: Strategy engine for capital deployment.
+- [x] **Interfaces**: Integration with AsterDEX standards.
+
+### Phase 3: The Integration (In Progress) 🔄
+- [ ] **Contract Testing**: Unit tests for Vault and Engine logic.
+- [ ] **Web3 Connection**: Integrate Wagmi/Viem/Ethers.js for wallet connection.
+- [ ] **Contract Hooks**: Read/Write functions from frontend to blockchain.
+- [ ] **Testnet Pilot**: Deploy contracts to BNB Testnet and verify flows.
+
+### Phase 4: The Launch 🚀
+- [ ] **Security Audit**: Third-party review of smart contracts.
+- [ ] **Mainnet Deployment**: Official launch on BNB Chain.
+- [ ] **Keeper Network**: Activation of decentralized keeper bots.
+- [ ] **DAO Governance**: Community voting implementation.
+
 ## 🛠 Tech Stack
 
 - **Framework**: [React](https://reactjs.org/) (via [Vite](https://vitejs.dev/))
