@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { LayoutDashboard, Wallet, Cpu, Crosshair, FileJson } from 'lucide-react';
 import { WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { RainbowKitProvider, darkTheme, Locale } from '@rainbow-me/rainbowkit';
 import { config } from './config/wagmi';
 import '@rainbow-me/rainbowkit/styles.css';
 
@@ -108,23 +108,40 @@ function AppContent() {
   );
 }
 
+// Separate component to consume LanguageContext properly for RainbowKit locale
+function RainbowKitWrapper({ children }: { children: React.ReactNode }) {
+  const { language } = useLanguage();
+
+  // Map our language ('en' | 'id') to RainbowKit locale ('en-US' | 'id-ID')
+  const locale = (language === 'id' ? 'id-ID' : 'en-US') as Locale;
+
+  return (
+    <RainbowKitProvider
+      locale={locale}
+      theme={darkTheme({
+        accentColor: '#10B981', // Emerald-500
+        accentColorForeground: 'white',
+        borderRadius: 'large',
+        fontStack: 'system',
+      })}
+    >
+      {children}
+    </RainbowKitProvider>
+  );
+}
+
 export function App() {
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider theme={darkTheme({
-          accentColor: '#10B981', // Emerald-500
-          accentColorForeground: 'white',
-          borderRadius: 'large',
-          fontStack: 'system',
-        })}>
-          <ThemeProvider>
-            <LanguageProvider>
+    <LanguageProvider>
+      <WagmiProvider config={config}>
+        <QueryClientProvider client={queryClient}>
+          <RainbowKitWrapper>
+            <ThemeProvider>
               <AppContent />
-            </LanguageProvider>
-          </ThemeProvider>
-        </RainbowKitProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
+            </ThemeProvider>
+          </RainbowKitWrapper>
+        </QueryClientProvider>
+      </WagmiProvider>
+    </LanguageProvider>
   );
 }
