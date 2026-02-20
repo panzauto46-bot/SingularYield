@@ -7,6 +7,7 @@ import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
 import { config } from './config/wagmi';
 import '@rainbow-me/rainbowkit/styles.css';
 
+import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/Header';
 import { GlobalDashboard } from './components/GlobalDashboard';
 import { VaultInterface } from './components/VaultInterface';
@@ -114,7 +115,9 @@ export function App() {
           borderRadius: 'large',
           fontStack: 'system',
         })}>
-          <AppContent />
+          <ThemeProvider>
+            <AppContent />
+          </ThemeProvider>
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
