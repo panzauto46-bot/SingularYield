@@ -4,7 +4,7 @@ import { http } from 'wagmi';
 
 export const config = getDefaultConfig({
     appName: 'SingularYield',
-    projectId: 'YOUR_WALLET_CONNECT_PROJECT_ID', // TODO: User needs to replace this
+    projectId: '1208757f664e7d433f3684636507d83c',
     chains: [bsc, bscTestnet],
     transports: {
         [bsc.id]: http('https://bsc-dataseed.binance.org/'),
