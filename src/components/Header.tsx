@@ -34,23 +34,6 @@ export function Header() {
 
           {/* Right Side Actions */}
           <div className="flex items-center gap-4">
-            {/* Language Switcher */}
-            <div className="flex items-center bg-white/5 rounded-lg border border-white/10 p-1">
-              <button
-                onClick={() => setLanguage('en')}
-                className={`px-2 py-1 text-xs font-semibold rounded ${language === 'en' ? 'bg-emerald-500 text-white' : 'text-slate-400 hover:text-white'
-                  }`}
-              >
-                EN
-              </button>
-              <button
-                onClick={() => setLanguage('id')}
-                className={`px-2 py-1 text-xs font-semibold rounded ${language === 'id' ? 'bg-emerald-500 text-white' : 'text-slate-400 hover:text-white'
-                  }`}
-              >
-                ID
-              </button>
-            </div>
 
             {/* Status Indicators (Desktop) */}
             <div className="hidden lg:flex items-center gap-4 mr-4 border-r border-white/5 pr-6">
@@ -62,6 +45,28 @@ export function Header() {
                 <ShieldCheck className="w-4 h-4 text-cyan-500" />
                 <span>{t('audited')}</span>
               </div>
+            </div>
+
+            {/* Language Switcher - Moved here for better visibility */}
+            <div className="flex items-center gap-1 bg-slate-800/50 rounded-lg border border-slate-700 p-1 mr-2">
+              <button
+                onClick={() => setLanguage('en')}
+                className={`px-3 py-1.5 text-xs font-bold rounded-md transition-all ${language === 'en'
+                    ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20'
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                  }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('id')}
+                className={`px-3 py-1.5 text-xs font-bold rounded-md transition-all ${language === 'id'
+                    ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20'
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                  }`}
+              >
+                ID
+              </button>
             </div>
 
             {/* Connect Wallet */}
