@@ -8,6 +8,8 @@ import { config } from './config/wagmi';
 import '@rainbow-me/rainbowkit/styles.css';
 
 import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
+
 import { Header } from './components/Header';
 import { GlobalDashboard } from './components/GlobalDashboard';
 import { VaultInterface } from './components/VaultInterface';
@@ -19,16 +21,17 @@ const queryClient = new QueryClient();
 
 type TabType = 'dashboard' | 'vault' | 'engine' | 'keeper' | 'transparency';
 
-const tabs = [
-  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { id: 'vault', label: 'Vault', icon: Wallet },
-  { id: 'engine', label: 'Engine Room', icon: Cpu },
-  { id: 'keeper', label: 'Keeper Hub', icon: Crosshair },
-  { id: 'transparency', label: 'Transparency', icon: FileJson },
-] as const;
-
 function AppContent() {
   const [activeTab, setActiveTab] = useState<TabType>('dashboard');
+  const { t } = useLanguage();
+
+  const tabs = [
+    { id: 'dashboard', label: t('dashboard'), icon: LayoutDashboard },
+    { id: 'vault', label: t('vault'), icon: Wallet },
+    { id: 'engine', label: t('engine'), icon: Cpu },
+    { id: 'keeper', label: t('keeper'), icon: Crosshair },
+    { id: 'transparency', label: t('transparency'), icon: FileJson },
+  ] as const;
 
   const renderContent = () => {
     switch (activeTab) {
@@ -98,8 +101,8 @@ function AppContent() {
 
       {/* Footer */}
       <footer className="mt-20 border-t border-white/5 pt-8 text-center text-slate-500 text-sm">
-        <p>&copy; 2024 SingularYield Protocol. All rights reserved.</p>
-        <p className="mt-2">Decentralized Keepers • Autonomous Yield • Trustless Execution</p>
+        <p>&copy; 2024 {t('footerRights')}</p>
+        <p className="mt-2">{t('footerTagline')}</p>
       </footer>
     </div>
   );
@@ -116,7 +119,9 @@ export function App() {
           fontStack: 'system',
         })}>
           <ThemeProvider>
-            <AppContent />
+            <LanguageProvider>
+              <AppContent />
+            </LanguageProvider>
           </ThemeProvider>
         </RainbowKitProvider>
       </QueryClientProvider>

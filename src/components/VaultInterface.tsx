@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
+import { useLanguage } from '../context/LanguageContext';
 
 export function VaultInterface() {
   const { theme } = useTheme();
+  const { t } = useLanguage();
   const [depositAmount, setDepositAmount] = useState('');
   const [selectedToken, setSelectedToken] = useState('USDT');
   const [userBalance, setUserBalance] = useState(15847.32);
@@ -29,8 +31,8 @@ export function VaultInterface() {
     }, 2000);
   };
 
-  const cardClass = theme === 'dark' 
-    ? 'bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-slate-700/50' 
+  const cardClass = theme === 'dark'
+    ? 'bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-slate-700/50'
     : 'bg-white border-slate-200 shadow-lg';
 
   return (
@@ -44,8 +46,8 @@ export function VaultInterface() {
             </svg>
           </div>
           <div>
-            <h3 className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>Single Deposit Gateway</h3>
-            <p className={`text-xs ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>One click. Infinite strategies.</p>
+            <h3 className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>{t('depositGateway')}</h3>
+            <p className={`text-xs ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>{t('depositSubtitle')}</p>
           </div>
         </div>
 
@@ -55,13 +57,12 @@ export function VaultInterface() {
             <button
               key={token}
               onClick={() => setSelectedToken(token)}
-              className={`px-4 py-2 rounded-lg font-medium text-sm transition-all border ${
-                selectedToken === token
+              className={`px-4 py-2 rounded-lg font-medium text-sm transition-all border ${selectedToken === token
                   ? 'bg-emerald-500/20 text-emerald-600 border-emerald-500/50'
-                  : theme === 'dark' 
+                  : theme === 'dark'
                     ? 'bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600'
                     : 'bg-slate-100 text-slate-600 border-slate-200 hover:border-slate-300'
-              }`}
+                }`}
             >
               {token}
             </button>
@@ -74,27 +75,25 @@ export function VaultInterface() {
             type="number"
             value={depositAmount}
             onChange={(e) => setDepositAmount(e.target.value)}
-            placeholder="Enter amount"
-            className={`w-full px-4 py-4 rounded-xl border text-lg focus:outline-none focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 ${
-              theme === 'dark' 
+            placeholder={t('enterAmount')}
+            className={`w-full px-4 py-4 rounded-xl border text-lg focus:outline-none focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 ${theme === 'dark'
                 ? 'bg-slate-900/50 border-slate-700 text-white placeholder-slate-500'
                 : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400'
-            }`}
+              }`}
           />
-          <button 
+          <button
             onClick={() => setDepositAmount(userBalance.toString())}
-            className={`absolute right-3 top-1/2 -translate-y-1/2 px-3 py-1 rounded-lg text-sm transition-colors ${
-              theme === 'dark' 
+            className={`absolute right-3 top-1/2 -translate-y-1/2 px-3 py-1 rounded-lg text-sm transition-colors ${theme === 'dark'
                 ? 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                 : 'bg-slate-200 text-slate-600 hover:bg-slate-300'
-            }`}
+              }`}
           >
-            MAX
+            {t('max')}
           </button>
         </div>
 
         <div className={`flex justify-between text-sm mb-6 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
-          <span>Available Balance</span>
+          <span>{t('availableBalance')}</span>
           <span className={theme === 'dark' ? 'text-white' : 'text-slate-900'}>{userBalance.toLocaleString()} {selectedToken}</span>
         </div>
 
@@ -110,20 +109,20 @@ export function VaultInterface() {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
-              Deploying to Singularity...
+              {t('deploying')}
             </>
           ) : (
             <>
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              DEPLOY TO SINGULARITY
+              {t('deployButton')}
             </>
           )}
         </button>
 
         <p className={`text-center text-xs mt-4 ${theme === 'dark' ? 'text-slate-500' : 'text-slate-400'}`}>
-          No staking, no harvesting, no compounding needed. The engine handles everything.
+          {t('deployNote')}
         </p>
       </div>
 
@@ -132,16 +131,16 @@ export function VaultInterface() {
         {/* Personal Position */}
         <div className={`rounded-2xl border p-6 ${cardClass}`}>
           <div className="flex items-center justify-between mb-6">
-            <h3 className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>Your Position</h3>
+            <h3 className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>{t('yourPosition')}</h3>
             <span className="flex items-center gap-1 text-emerald-500 text-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              Auto-compounding
+              {t('autoCompounding')}
             </span>
           </div>
 
           {/* Animated Balance Display */}
           <div className="text-center py-6">
-            <div className={`text-sm mb-2 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>Total Deposited Value</div>
+            <div className={`text-sm mb-2 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>{t('totalDeposited')}</div>
             <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 animate-pulse">
               ${userDeposited.toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4 })}
             </div>
@@ -149,7 +148,7 @@ export function VaultInterface() {
               <svg className="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
               </svg>
-              <span className="text-emerald-500">+${earnings.toFixed(4)} earned</span>
+              <span className="text-emerald-500">+${earnings.toFixed(4)} {t('earned')}</span>
             </div>
           </div>
 
@@ -164,17 +163,16 @@ export function VaultInterface() {
             ))}
           </div>
           <div className={`flex justify-between text-xs px-4 mt-2 ${theme === 'dark' ? 'text-slate-500' : 'text-slate-400'}`}>
-            <span>24h ago</span>
-            <span>Now</span>
+            <span>{t('timeAgo')}</span>
+            <span>{t('timeNow')}</span>
           </div>
         </div>
 
         {/* Withdrawal Button */}
-        <div className={`rounded-2xl border p-6 ${
-          theme === 'dark' 
-            ? 'bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-red-500/20' 
+        <div className={`rounded-2xl border p-6 ${theme === 'dark'
+            ? 'bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-red-500/20'
             : 'bg-white border-red-200 shadow-lg'
-        }`}>
+          }`}>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center">
               <svg className="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -182,17 +180,17 @@ export function VaultInterface() {
               </svg>
             </div>
             <div>
-              <h3 className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>Emergency Unwind</h3>
-              <p className={`text-xs ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>No lock-up. Withdraw anytime.</p>
+              <h3 className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>{t('emergencyUnwind')}</h3>
+              <p className={`text-xs ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>{t('emergencySubtitle')}</p>
             </div>
           </div>
-          
+
           <button className="w-full py-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-500 font-semibold hover:bg-red-500/20 transition-all">
-            Withdraw All Funds
+            {t('withdrawAll')}
           </button>
-          
+
           <p className={`text-center text-xs mt-3 ${theme === 'dark' ? 'text-slate-500' : 'text-slate-400'}`}>
-            ⚠️ No admin can prevent withdrawal. Fully non-custodial.
+            {t('nonCustodial')}
           </p>
         </div>
       </div>

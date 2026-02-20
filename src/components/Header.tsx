@@ -1,7 +1,10 @@
-import { Activity, ShieldCheck, Zap } from 'lucide-react';
+import { Activity, ShieldCheck, Zap, Globe } from 'lucide-react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useLanguage } from '../context/LanguageContext';
 
 export function Header() {
+  const { language, setLanguage, t } = useLanguage();
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-header">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,27 +27,45 @@ export function Header() {
               </h1>
               <div className="flex items-center gap-2 text-xs text-slate-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>System Operational</span>
+                <span>{t('systemStatus')}</span>
               </div>
             </div>
           </div>
 
           {/* Right Side Actions */}
           <div className="flex items-center gap-4">
+            {/* Language Switcher */}
+            <div className="flex items-center bg-white/5 rounded-lg border border-white/10 p-1">
+              <button
+                onClick={() => setLanguage('en')}
+                className={`px-2 py-1 text-xs font-semibold rounded ${language === 'en' ? 'bg-emerald-500 text-white' : 'text-slate-400 hover:text-white'
+                  }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('id')}
+                className={`px-2 py-1 text-xs font-semibold rounded ${language === 'id' ? 'bg-emerald-500 text-white' : 'text-slate-400 hover:text-white'
+                  }`}
+              >
+                ID
+              </button>
+            </div>
+
             {/* Status Indicators (Desktop) */}
             <div className="hidden lg:flex items-center gap-4 mr-4 border-r border-white/5 pr-6">
               <div className="flex items-center gap-2 text-sm text-slate-400">
                 <Activity className="w-4 h-4 text-emerald-500" />
-                <span>APY: <span className="text-white font-mono">14.2%</span></span>
+                <span>{t('currentApy')}: <span className="text-white font-mono">14.2%</span></span>
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-400">
                 <ShieldCheck className="w-4 h-4 text-cyan-500" />
-                <span>Audited</span>
+                <span>{t('audited')}</span>
               </div>
             </div>
 
             {/* Connect Wallet */}
-            <ConnectButton showBalance={false} chainStatus="icon" accountStatus="address" />
+            <ConnectButton showBalance={false} chainStatus="icon" accountStatus="address" label={t('connectWallet')} />
           </div>
         </div>
       </div>
