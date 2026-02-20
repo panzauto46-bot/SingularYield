@@ -101,7 +101,7 @@ function AppContent() {
 
       {/* Footer */}
       <footer className="mt-20 border-t border-white/5 pt-8 text-center text-slate-500 text-sm">
-        <p>&copy; 2024 {t('footerRights')}</p>
+        <p>&copy; 2026 {t('footerRights')}</p>
         <p className="mt-2">{t('footerTagline')}</p>
       </footer>
     </div>
