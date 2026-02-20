@@ -454,9 +454,31 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
+## 📫 Connect with Me
+
+<p align="left">
+  <a href="mailto:pandudargah202@gmail.com">
+    <img src="https://img.shields.io/badge/Email-pandudargah202%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
+  </a>
+  <a href="https://www.linkedin.com/in/pandu-darma-195a621b2/">
+    <img src="https://img.shields.io/badge/LinkedIn-Pandu_Darma-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+  <a href="https://x.com/BTC_SEANA">
+    <img src="https://img.shields.io/badge/X_(Twitter)-@BTC__SEANA-000000?style=for-the-badge&logo=x&logoColor=white" alt="X" />
+  </a>
+  <a href="https://t.me/BTC_SEANA">
+    <img src="https://img.shields.io/badge/Telegram-@BTC__SEANA-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" />
+  </a>
+  <a href="#">
+    <img src="https://img.shields.io/badge/Discord-pandudargah-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" />
+  </a>
+</p>
+
+---
+
 ## 📄 License
 
-Distributed under the **MIT License**. See `LICENSE` for more information.
+Distributed under the **MIT License**. Copyright (c) 2026 **Pandu Darga**. See `LICENSE` for more information.
 
 ---
 
